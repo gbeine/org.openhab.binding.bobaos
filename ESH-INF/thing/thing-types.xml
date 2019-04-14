@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="bobaos"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="http://eclipse.org/smarthome/schemas/thing-description/v1.0.0 http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd">
+
+	<!-- Sample Thing Type -->
+	<thing-type id="boba" extensible="datapoint-switch-type">
+		<label>bobaos Thing</label>
+		<description>Sample thing for bobaos</description>
+                
+		<config-description>
+
+			<parameter name="redisURI" type="text" required="true">
+                <label>Redis URI</label>
+                <description>Redis URI to connect to.</description>
+                <default>redis://localhost:6379</default>
+            </parameter>
+            <parameter name="requestChannel" type="text" required="true">
+                <label>Request channel</label>
+                <description>PubSub channel to send datapoint requests to.</description>
+                <default>bobaos_req</default>
+            </parameter>
+            <parameter name="serviceChannel" type="text" required="true">
+                <label>Request channel</label>
+                <description>PubSub channel to send service requests to.</description>
+                <default>bobaos_service</default>
+            </parameter>
+            <parameter name="broadcastChannel" type="text" required="true">
+                <label>Broadcast channel</label>
+                <description>PubSub channel to listen for incoming values to.</description>
+                <default>bobaos_bcast</default>
+            </parameter>
+            <parameter name="resPrefix" type="text" required="true">
+                <label>Response channel prefix</label>
+                <description>String prefix for response channels</description>
+                <default>jobaos_res</default>
+            </parameter>
+		</config-description>
+		
+		
+	</thing-type>
+
+	<!-- Sample Channel Type -->
+	<channel-type id="datapoint-switch-type">
+		<item-type>Switch</item-type>
+		<label>bobaos Channel Switch</label>
+		<description>Datapoint switch(true/false) channel for bobaos</description>
+	    <config-description>
+            <parameter name="control" type="integer">
+                <label>Control datapoint</label>
+                <description>Datapoint number to control</description>
+                <required>true</required>
+            </parameter>
+            <parameter name="status" type="integer">
+                <label>Status datapoint</label>
+                <description>Status datapoint number</description>
+                <required>true</required>
+            </parameter>
+        </config-description>
+		
+	</channel-type>
+
+</thing:thing-descriptions>
